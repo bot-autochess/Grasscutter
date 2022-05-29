@@ -35,7 +35,7 @@ public class PacketPullRecentChatRsp extends BasePacket {
 				.setTime((int) (System.currentTimeMillis() / 1000))
 				.setUid(GameConstants.SERVER_CONSOLE_UID)
 				.setToUid(player.getUid())
-				.setText(joinOptions.welcomeMessage+("\n\nServer:\nLeak2VN "\nGrasscutter "+ BuildConfig.VERSION))
+				.setText(joinOptions.welcomeMessage+("\n\nServer:\nLeak2VN \nGrasscutter "+ BuildConfig.VERSION))
 				.build();
 			proto.addChatInfo(welcomeMessage);
 		}
