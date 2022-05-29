@@ -1,0 +1,405 @@
+{
+  "messages": {
+    "game": {
+      "port_bind": "Game Server started on port %s",
+      "connect": "Client connected from %s",
+      "disconnect": "Client disconnected from %s",
+      "game_update_error": "An error occurred during game update.",
+      "command_error": "Command error:"
+    },
+    "dispatch": {
+      "port_bind": "[Dispatch] Dispatch server started on port %s",
+      "request": "[Dispatch] Client %s %s request: %s",
+      "keystore": {
+        "general_error": "[Dispatch] Error while loading keystore!",
+        "password_error": "[Dispatch] Unable to load keystore. Trying default keystore password...",
+        "no_keystore_error": "[Dispatch] No SSL cert found! Falling back to HTTP server.",
+        "default_password": "[Dispatch] The default keystore password was loaded successfully. Please consider setting the password to 123456 in config.json."
+      },
+      "no_commands_error": "Commands are not supported in dispatch only mode.",
+      "unhandled_request_error": "[Dispatch] Potential unhandled %s request: %s",
+      "account": {
+        "login_attempt": "[Dispatch] Client %s is trying to log in",
+        "login_success": "[Dispatch] Client %s logged in as %s",
+        "login_token_attempt": "[Dispatch] Client %s is trying to log in via token",
+        "login_token_error": "[Dispatch] Client %s failed to log in via token",
+        "login_token_success": "[Dispatch] Client %s logged in via token as %s",
+        "combo_token_success": "[Dispatch] Client %s succeed to exchange combo token",
+        "combo_token_error": "[Dispatch] Client %s failed to exchange combo token",
+        "account_login_create_success": "[Dispatch] Client %s failed to log in: Account %s created",
+        "account_login_create_error": "[Dispatch] Client %s failed to log in: Account create failed",
+        "account_login_exist_error": "[Dispatch] Client %s failed to log in: Account no found",
+        "account_cache_error": "Game account cache information error",
+        "session_key_error": "Wrong session key.",
+        "username_error": "Username not found.",
+        "username_create_error": "Username not found, create failed."
+      }
+    },
+    "status": {
+      "free_software": "Grasscutter is FREE software. If you have paid for this, you may have been scammed. Homepage: https://github.com/Grasscutters/Grasscutter",
+      "starting": "Starting Grasscutter...",
+      "shutdown": "Shutting down...",
+      "done": "Done! For help, type \"help\"",
+      "error": "An error occurred.",
+      "welcome": "Welcome to Grasscutter",
+      "run_mode_error": "Invalid server run mode: %s.",
+      "run_mode_help": "Server run mode must be 'HYBRID', 'DISPATCH_ONLY', or 'GAME_ONLY'. Unable to start Grasscutter...",
+      "create_resources": "Creating resources folder...",
+      "resources_error": "Place a copy of 'BinOutput' and 'ExcelBinOutput' in the resources folder."
+    }
+  },
+  "commands": {
+    "generic": {
+      "not_specified": "Không có command nào được chỉ định.",
+      "unknown_command": "Sai command: %s",
+      "permission_error": "Bạn không có quyền để chạy command này.",
+      "console_execute_error": "Command này chỉ được chạy từ console.",
+      "player_execute_error": "Chạy command này trong trò chơi.",
+      "command_exist_error": "Không tìm thấy command nào.",
+      "invalid": {
+        "amount": "Số lượng không hợp lệ.",
+        "artifactId": "ID của TDV không hợp lệ.",
+        "avatarId": "ID của nhân vật không hợp lệ.",
+        "avatarLevel": "Level của nhân vật không hợp lệ.",
+        "entityId": "ID Boss không hợp lệ.",
+        "itemId": "ID của Item không hợp lệ.",
+        "itemLevel": "Level của Item không hợp lệ.",
+        "itemRefinement": "Hạng Tinh Luyện của Item không hợp lệ.",
+        "playerId": "ID của người chơi không hợp lệ.",
+        "uid": "UID không hợp lệ."
+      }
+    },
+    "execution": {
+      "uid_error": "UID không hợp lệ.",
+      "player_exist_error": "Không tìm thấy người chơi.",
+      "player_offline_error": "Người chơi không online.",
+      "item_id_error": "ID của Item không hợp lệ.",
+      "item_player_exist_error": "UID hoặc Item không hợp lệ.",
+      "entity_id_error": "ID Boss không hợp lệ.",
+      "player_exist_offline_error": "Không tìm thấy người chơi hoặc không online.",
+      "argument_error": "Arguments không hợp lệ.",
+      "clear_target": "Đã được dọn dẹp.",
+      "set_target": "Subsequent commands will target @%s by default.",
+      "need_target": "Command này yêu cầu một UID. Thêm một <@UID> hoặc chỉ định một /target @UID."
+    },
+    "status": {
+      "enabled": "Được kích hoạt",
+      "disabled": "Vô hiệu hoá",
+      "help": "Giúp đỡ",
+      "success": "Thành công"
+    },
+    "account": {
+      "modify": "Modify user accounts",
+      "invalid": "UID không hợp lệ.",
+      "exists": "Tài khoản đã tồn tại.",
+      "create": "Tài khoản được tạo với UID %s.",
+      "delete": "Tài khoản đã bị xoá.",
+      "no_account": "Không tìm thấy tài khoản.",
+      "command_usage": "Cách dùng: account <create|delete> <tên tài khoản> [uid]",
+	  "description": "Chỉ Admin mới có thể sử dụng"
+    },
+    "broadcast": {
+      "command_usage": "Cách dùng: broadcast <message>",
+      "message_sent": "Đã gửi tin nhắn.",
+	  "description": "Gửi tin nhắn đến tất cả người chơi"
+    },
+    "changescene": {
+      "usage": "Cách dùng: changescene <sceneId>",
+      "already_in_scene": "Bạn đã ở trong scene này.",
+      "success": "Được thay đổi thành scene %s.",
+      "exists_error": "Scene được chỉ định này không tồn tại.",
+	  "description": "Thay đổi cảnh chơi"
+    },
+    "clear": {
+      "command_usage": "Cách dùng: clear <all|wp|art|mat>",
+      "weapons": "Đã xoá vũ khí cho %s.",
+      "artifacts": "Đã xoá TDV cho %s.",
+      "materials": "Đã xoá nguyên liệu cho %s.",
+      "furniture": "Đã xoá đồ nội thất cho %s.",
+      "displays": "Đã xoá displays cho %s.",
+      "virtuals": "Đã xoá virtuals cho %s.",
+      "done": "Đã xoá %s item với %s limit",
+	  "description": "Xoá tất cả hoặc một vài loại item"
+    },
+    "coop": {
+      "usage": "Cách dùng: coop <playerId> <target playerId>",
+      "success": "Summoned %s to %s's world.",
+	  "description": "Tham gia vào thế giới người khác. Tính năng tạm thời bị chặn vì spam"
+    },
+    "enter_dungeon": {
+      "usage": "Cách dùng: enterdungeon <ID của bí cảnh>",
+      "changed": "Được thay đổi thành %s",
+      "not_found_error": "Bí cảnh không tồn tại",
+      "in_dungeon_error": "Bạn đã ở trong bí cảnh này",
+	  "description": "Vào bí cảnh"
+    },
+    "giveAll": {
+      "usage": "Cách dùng: giveall [người chơi] [số lượng]",
+      "started": "Đang nhận tất cả item...",
+      "success": "Đã gửi thành công tất cả item cho %s.",
+      "invalid_amount_or_playerId": "ID người chơi hoặc số lượng không hợp lệ.",
+	  "description": "Gửi tất cả item cho người chơi"
+    },
+    "giveArtifact": {
+      "usage": "Cách dùng: Sử dụng bot TDV trong discord",
+      "id_error": "ID của TDV không hợp lệ.",
+      "success": "Đã thêm %s cho %s.",
+	  "description": "Gửi TDV"
+    },
+    "giveChar": {
+      "usage": "Cách dùng: givechar <người chơi> <itemId|itemName> [số lượng]",
+      "given": "Đã gửi %s với level %s cho %s.",
+      "invalid_avatar_id": "ID avatar không hợp lệ.",
+      "invalid_avatar_level": "Level avatar không hợp lệ.",
+      "invalid_avatar_or_player_id": "ID người chơi hoặc ID avatar không hợp lệ.",
+	  "description": "Gửi nhân vật"
+    },
+    "give": {
+      "usage": "Cách dùng: give <player> <itemId|itemName> [số lượng] [level]",
+      "refinement_only_applicable_weapons": "Hạng tinh luyện chỉ dành cho vũ khí.",
+      "refinement_must_between_1_and_5": "Hạng tinh luyện chỉ từ 1 đến 5.",
+      "given": "Đã gửi %s của %s to %s.",
+      "given_with_level_and_refinement": "Đã gửi %s với level %s, hạng tinh luyện %s %s lần cho %s",
+      "given_level": "Đã gửi %s với level %s lần cho %s",
+	  "description": "Gửi item"
+    },
+    "godmode": {
+      "success": "Godmode đã được %s cho %s.",
+	  "description": "I'm superman"
+    },
+    "heal": {
+      "success": "Tất cả nhân vật đã được hồi máu.",
+	  "description": "Hồi máu cho tất cả nhân vật"
+    },
+    "kick": {
+      "player_kick_player": "Player [%s:%s] has kicked player [%s:%s]",
+      "server_kick_player": "Kicking player [%s:%s]",
+	  "description": "Chỉ Admin mới có thể sử dụng"
+    },
+    "kill": {
+      "usage": "Cách dùng: killall [playerUid] [sceneId]",
+      "scene_not_found_in_player_world": "Scene không được tìm thấy ở thế giới",
+      "kill_monsters_in_scene": "Đang trảm sát %s quái vật ở scene %s",
+	  "description": "Trảm sát tất cả quái vật"
+    },
+    "killCharacter": {
+      "usage": "Cách dùng: /killcharacter [playerId]",
+      "success": "Đã tự tay bóp... %s's nhân vật hiện tại.",
+	  "description": "Bóp trym"
+    },
+	"language": {
+      "current_language": "Ngôn ngữ hiện tại là %s",
+      "language_changed": "Ngôn ngữ được thay đổi thành %s",
+      "language_not_found": "Sai ID ngôn ngữ. Các ID ngôn ngữ hiện tại là vi-VN và en-US",
+      "description": "Hiện thị ngôn ngữ"
+    },
+    "list": {
+      "success": "Có %s người chơi online:",
+	  "description": "Xem hiện tại có bao nhiêu người online."
+    },
+    "permission": {
+      "usage": "Cách dùng: permission <add|remove> <username> <permission>",
+      "add": "Đã thêm quyền quản trị.",
+      "has_error": "They already have this permission!",
+      "remove": "Permission removed.",
+      "not_have_error": "They don't have this permission!",
+      "account_error": "The account cannot be found.",
+	  "description": "Chỉ Admin mới có thể dùng"
+    },
+	"quest": {
+      "description": "Quest trong game",
+      "usage": "quest <add|finish> [quest id]",
+      "added": "Quest %s đã được thêm vào",
+      "finished": "Quest %s đã được kết thúc",
+      "not_found": "Sai ID quest",
+      "invalid_id": "Sai ID quest"
+    },
+    "position": {
+      "success": "Toạ độ: %s, %s, %s\nScene id: %s",
+	  "description": "Kiểm tra toạ độ đang đứng"
+    },
+    "reload": {
+      "reload_start": "Reloading config.",
+      "reload_done": "Reload complete.",
+	  "description": "Chỉ admin mới có thể dùng"
+    },
+    "resetConst": {
+      "reset_all": "Reset tất cả cung mệnh.",
+      "success": "Cung mệnh %s vừa được reset. Re-login để thấy sự thay đổi.",
+	  "description": "Reset tất cả cung mệnh nhân vật đang dùng"
+    },
+    "resetShopLimit": {
+      "usage": "Cách dùng: /resetshop <player id>",
+	  "description": "Chỉ Admin mới có thể dùng"
+    },
+	"resetshop": {
+      "description": "Reset shop. Chỉ admin mới có thể dùng"
+    },
+    "sendMail": {
+      "usage": "Usage: give [player] <itemId|itemName> [amount]",
+      "user_not_exist": "The user with an id of '%s' does not exist",
+      "start_composition": "Starting composition of message.\nPlease use `/sendmail <title>` to continue.\nYou can use `/sendmail stop` at any time",
+      "templates": "Mail templates coming soon implemented...",
+      "invalid_arguments": "Invalid arguments.\nUsage `/sendmail <userId|all|help> [templateId]`",
+      "send_cancel": "Message sending cancelled",
+      "send_done": "Message sent to user %s!",
+      "send_all_done": "Message sent to all users!",
+      "not_composition_end": "Message composition not at final stage.\nPlease use `/sendmail %s` or `/sendmail stop` to cancel",
+      "please_use": "Please use `/sendmail %s`",
+      "set_title": "Message title set as '%s'.\nUse '/sendmail <content>' to continue.",
+      "set_contents": "Message contents set as '%s'.\nUse '/sendmail <sender>' to continue.",
+      "set_message_sender": "Message sender set as '%s'.\nUse '/sendmail <itemId|itemName|finish> [amount] [level]' to continue.",
+      "send": "Attached %s of %s (level %s) to the message.\nContinue adding more items or use `/sendmail finish` to send the message.",
+      "invalid_arguments_please_use": "Invalid arguments \n Please use `/sendmail %s`",
+      "title": "<title>",
+      "message": "<message>",
+      "sender": "<sender>",
+      "arguments": "<itemId|itemName|finish> [amount] [level]",
+      "error": "ERROR: invalid construction stage %s. Check console for stacktrace.",
+	  "description": "Chỉ Admin mới có thể dùng"
+    },
+    "sendMessage": {
+      "usage": "Cách dùng: sendmessage <player> <message>",
+      "success": "Đã gửi tin nhắn.",
+	  "description": "Gửi tin nhắn"
+    },
+    "setFetterLevel": {
+      "usage": "Cách dùng: setfetterlevel <level>",
+      "range_error": "Cấp yêu thích chỉ từ 1 đến 10.",
+      "success": "Cấp yêu thích được set thành %s",
+      "level_error": "Level cấp yêu thích không hợp lệ.",
+	  "description": "Cấp yêu thích"
+    },
+    "setStats": {
+      "usage_console": "Cách dùng: setstats|stats @<UID> <stat> <value>",
+      "usage_ingame": "Cách dùng: setstats|stats [@UID] <stat> <value>",
+      "help_message": "\n\tValues for <stat>: hp | maxhp | def | atk | em | er | crate | cdmg | cdr | heal | heali | shield | defi\n\t(cont.) Elemental DMG Bonus: epyro | ecryo | ehydro | egeo | edendro | eelectro | ephys\n\t(cont.) Elemental RES: respyro | rescryo | reshydro | resgeo | resdendro | reselectro | resphys\n",
+      "value_error": "Chỉ số stats không hợp lệ.",
+      "uid_error": "UID không hợp lệ.",
+      "player_error": "Không tìm thấy người chơi hoặc offline.",
+      "set_self": "%s set thành %s.",
+      "set_for_uid": "%s for %s set thành %s.",
+      "set_max_hp": "MAX HP set thành %s.",
+	  "description": "Set chỉ số nhân vật"
+    },
+    "setWorldLevel": {
+      "usage": "Cách dùng: setworldlevel <level>",
+      "value_error": "Cấp thế giới chỉ từ 0-8",
+      "success": "Cấp thế giới được set thành %s.",
+      "invalid_world_level": "Cấp thế giới không hợp lệ.",
+	  "description": "Cấp thế giới"
+    },
+    "spawn": {
+      "usage": "Cách dùng: spawn <entityId> [amount] [level(monster only)]",
+      "success": "Spawned %s of %s.",
+	  "description": "Gọi quái vật"
+    },
+    "stop": {
+      "success": "Server shutting down in 5 seconds...",
+	  "description": "Chỉ Admin mới có thể dùng"
+    },
+    "talent": {
+      "usage_1": "Để set cấp thiên phú: /talent set <talentID> <value>",
+      "usage_2": "Cách khác để set cấp thiên phú: /talent <n or e or q> <value>",
+      "usage_3": "Để lấy ID thiên phú: /talent getid",
+      "lower_16": "Cấp thiên phú không hợp lệ. Phải <16",
+      "set_id": "Set thiên phú thành %s.",
+      "set_atk": "Set thiên phú Tấn Công Thường thành %s.",
+      "set_e": "Set thiên phú E thành %s.",
+      "set_q": "Set thiên phú Q thành %s.",
+      "invalid_skill_id": "ID skill không hợp lệ.",
+      "set_this": "Set thiên phú này thành %s.",
+      "invalid_level": "Cấp thiên phú không hợp lệ.",
+      "normal_attack_id": "ID Tấn Công Thường %s.",
+      "e_skill_id": "E skill ID %s.",
+      "q_skill_id": "Q skill ID %s.",
+	  "description": "Set thiên phú"
+    },
+    "teleportAll": {
+      "success": "Summoned tất cả người chơi đến vị trí của bạn.",
+      "error": "Bạn chỉ có thể sử dụng command này ở MP mode.",
+	  "description": "Chỉ Admin mới có thể dùng"
+    },
+    "teleport": {
+      "usage_server": "Cách dùng: /tp @<player id> <x> <y> <z> [scene id]",
+      "usage": "Cách dùng: /tp [@<player id>] <x> <y> <z> [scene id]",
+      "specify_player_id": "You must specify a player id.",
+      "invalid_position": "Vị trí không hợp lệ.",
+      "success": "Teleported %s to %s, %s, %s in scene %s",
+	  "description": "Tp đến vị trí bất kì"
+    },
+    "weather": {
+      "usage": "Cách dùng: weather <weatherId> [climateId]",
+      "success": "Thời tiết thay đổi thành %s with climate %s",
+      "invalid_id": "ID không hợp lệ.",
+	  "description": "Thay đổi thời tiết"
+    },
+    "drop": {
+      "command_usage": "Cách dùng: drop <itemId|itemName> [số lượng]",
+      "success": "Dropped %s of %s.",
+	  "description": "Vứt item ra ngoài"
+    },
+	"unlocktower": {
+      "success": "Đã mở khoá tất cả tầng La Hoàn",
+      "description": "Mở khoá tất cả tầng La Hoàn"
+    },
+	"restart": {
+      "description": "Chỉ admin mới có thể dùng"
+    },
+	"team": {
+      "usage": "Usage: team <add|remove|set> [avatarID,...] [index|first|last|index-index,...]",
+      "invalid_usage": "Invalid usage.",
+      "add_usage": "Usage (add): team add <avatarID,...> [index]",
+      "invalid_index": "Index is invalid.",
+      "add_too_much": "The server only allows you to have at most %d avatar(s) in your team.",
+      "failed_to_add_avatar": "Failed to add avatar ID %s.",
+      "remove_usage": "Usage (remove): team remove <index|first|last|index-index,...>",
+      "failed_to_parse_index": "Failed to parse index: %s",
+      "remove_too_much": "You can't remove all your avatars.",
+      "ignore_index": "Ignored index(es): %s",
+      "set_usage": "Usage (set): team set <index> <avatarID>",
+      "index_out_of_range": "The index you specified is out of range.",
+      "failed_parse_avatar_id": "Failed to parse avatar ID: %s",
+      "avatar_already_in_team": "Avatar is already in team.",
+      "avatar_not_found": "Avatar %d not found.",
+      "description": "Modify your team manually."
+    },
+    "help": {
+      "usage": "Cách dùng: ",
+      "aliases": "Viết tắt: ",
+      "available_commands": "Các command hiện tại của Leak2VN Private Server:",
+	  "description": "Tất cả các command"
+    }
+  },
+  "gacha": {
+    "details": {
+      "title": "Chi tiết Banner",
+      "available_five_stars": "Available 5-star Items",
+      "available_four_stars": "Available 4-star Items",
+      "available_three_stars": "Available 3-star Items",
+      "template_missing": "data/gacha_details.html is missing."
+    }
+  },
+  "documentation": {
+    "handbook": {
+      "title": "GM Handbook",
+      "title_commands": "Commands",
+      "title_avatars": "Avatars",
+      "title_items": "Items",
+      "title_scenes": "Scenes",
+      "title_monsters": "Monsters",
+      "header_id": "Id",
+      "header_command": "Command",
+      "header_description": "Description",
+      "header_avatar": "Avatar",
+      "header_item": "Item",
+      "header_scene": "Scene",
+      "header_monster": "Monster"
+    },
+    "index": {
+      "title": "Documentation",
+      "handbook": "GM Handbook",
+      "gacha_mapping": "Gacha mapping JSON"
+    }
+  }
+}
