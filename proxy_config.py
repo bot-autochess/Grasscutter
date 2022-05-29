@@ -2,7 +2,7 @@ import os
 
 # This can also be replaced with another IP address.
 USE_SSL = True
-REMOTE_HOST = "game.yuuki.me"
+REMOTE_HOST = "leak2vn.lumie.moe"
 REMOTE_PORT = 443
 
 if os.getenv('MITM_REMOTE_HOST') != None:
