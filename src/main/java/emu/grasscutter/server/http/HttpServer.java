@@ -156,7 +156,7 @@ public final class HttpServer {
                                 </head>
                                 <body>%s</body>
                             </html>
-                            """.formatted("Server running with <a href='https://github.com/akbaryahya/DockerGC'>DockerGC "+ConfigContainer.version_DockerGC+"</a> is a container that run <a href='https://github.com/Grasscutters/Grasscutter'>Grasscutter</a>"));
+                            """.formatted("DDos cc. Server Leak2VN is running with <a href='https://github.com/Grasscutters/Grasscutter'>Grasscutter</a>"));
                 else {
                     final var filePath = file.getPath();
                     final MediaType fromExtension = MediaType.getByExtension(filePath.substring(filePath.lastIndexOf(".") + 1));
